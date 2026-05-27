@@ -1,0 +1,15 @@
+# Archivos del sistema y del explorador
+.DS_Store
+Thumbs.db
+
+# Cachés y temporales de aplicaciones
+*.log
+*.tmp
+*.bak
+.cache/
+
+# Temporales de editores (por si acaso abres cosas con Vim/Neovim)
+*.swp
+*.swo
+.netrwhist
+undo/

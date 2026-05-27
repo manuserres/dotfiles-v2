@@ -1,0 +1,61 @@
+# Indica a Starship que no meta saltos de línea
+add_newline = false
+
+# Formato con los colores de la foto:
+# color 8 o 0 (Gris oscuro), color 3 (Naranja/Amarillo), color 2 (Verde), color 6 (Azul claro/Cian para Git Status), color 5 (Rosa/Púrpura)
+format = """
+[](fg:8)\
+$username\
+[](fg:8 bg:3)\
+$directory\
+[](fg:3 bg:2)\
+$git_branch\
+[](fg:2 bg:6)\
+$git_status\
+[](fg:6 bg:5)\
+$time\
+[](fg:5)\
+\n$character"""
+
+# --- BLOQUE 1: USUARIO (Gris oscuro, texto claro) ---
+[username]
+show_always = true
+style_user = "bg:8 fg:7"
+style_root = "bg:8 fg:1"
+format = '[󰣇 $user]($style)' # ¡Aquí tienes el logo de Arch Linux!
+
+# --- BLOQUE 2: RUTA / DIRECTORIO (Naranja, texto oscuro) ---
+[directory]
+style = "bg:3 fg:0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# --- BLOQUE 3: GIT BRANCH (Verde, texto oscuro) ---
+[git_branch]
+symbol = " "
+style = "bg:2 fg:0"
+format = '[ $symbol$branch ]($style)'
+
+# --- BLOQUE 4: GIT STATUS (Azul claro/Cian de la foto, texto oscuro) ---
+[git_status]
+style = "bg:6 fg:0"
+format = '[$all_status$ahead_behind ]($style)'
+# Iconos discretos por si modificas algo, para que no rompan el diseño:
+conflicted = " "
+ahead = "⇡ "
+behind = "⇣ "
+modified = " "
+untracked = "? "
+
+# --- BLOQUE 5: RELOJ (Rosa/Púrpura, texto oscuro) ---
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:5 fg:0"
+format = '[  $time ]($style)'
+
+# --- CARÁCTER DE ENTRADA (LÍNEA DE ABAJO) ---
+[character]
+success_symbol = "[➔](bold green) "
+error_symbol = "[➔](bold red) "
