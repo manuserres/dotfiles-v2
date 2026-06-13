@@ -1,8 +1,7 @@
 # Indica a Starship que no meta saltos de línea
 add_newline = false
 
-# Formato con los colores de la foto:
-# color 8 o 0 (Gris oscuro), color 3 (Naranja/Amarillo), color 2 (Verde), color 6 (Azul claro/Cian para Git Status), color 5 (Rosa/Púrpura)
+# NUEVO FORMATO: Git unificado en el bloque verde (2) y Duración de Comando en el azul (4)
 format = """
 [](fg:8)\
 $username\
@@ -10,9 +9,10 @@ $username\
 $directory\
 [](fg:3 bg:2)\
 $git_branch\
-[](fg:2 bg:6)\
 $git_status\
-[](fg:6 bg:5)\
+[](fg:2 bg:4)\
+$cmd_duration\
+[](fg:4 bg:5)\
 $time\
 [](fg:5)\
 \n$character"""
@@ -22,7 +22,7 @@ $time\
 show_always = true
 style_user = "bg:8 fg:7"
 style_root = "bg:8 fg:1"
-format = '[󰣇 $user]($style)' # ¡Aquí tienes el logo de Arch Linux!
+format = '[󰣇 $user]($style)'
 
 # --- BLOQUE 2: RUTA / DIRECTORIO (Naranja, texto oscuro) ---
 [directory]
@@ -37,18 +37,23 @@ symbol = " "
 style = "bg:2 fg:0"
 format = '[ $symbol$branch ]($style)'
 
-# --- BLOQUE 4: GIT STATUS (Azul claro/Cian de la foto, texto oscuro) ---
+# --- BLOQUE 4: GIT STATUS (¡Ahora metido en el bloque VERDE!) ---
 [git_status]
-style = "bg:6 fg:0"
-format = '[$all_status$ahead_behind ]($style)'
-# Iconos discretos por si modificas algo, para que no rompan el diseño:
+style = "bg:2 fg:0" # Usamos fondo verde (2) para unificarlo
+format = '[$all_status$ahead_behind]($style)' # Espacios controlados internamente
 conflicted = " "
 ahead = "⇡ "
 behind = "⇣ "
 modified = " "
 untracked = "? "
 
-# --- BLOQUE 5: RELOJ (Rosa/Púrpura, texto oscuro) ---
+# --- BLOQUE 5: DURACIÓN DE COMANDO (Azul claro, texto oscuro) ---
+[cmd_duration]
+min_time = 2000 # Solo se muestra si el comando tarda más de 2 segundos
+style = "bg:4 fg:0"
+format = '[ 󱎫 $duration ]($style)'
+
+# --- BLOQUE 6: RELOJ (Rosa/Púrpura, texto oscuro) ---
 [time]
 disabled = false
 time_format = "%R"
