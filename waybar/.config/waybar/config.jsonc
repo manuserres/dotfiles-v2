@@ -62,7 +62,7 @@
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
-    "format-wifi": "{icon} {essid} {signalStrength}%", // Muestra: 󰤨 MiWiFi 95%
+    "format-wifi": "{icon} {signalStrength}%", // Muestra: 󰤨  95%
     "format-ethernet": "󰀂  Eth",
     "format-disconnected": "󰤮  Desc.",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)",
